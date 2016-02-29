@@ -1,2 +1,5 @@
-/vendor
-/.idea
+/.idea/
+/vendor/
+
+/test/Fixture/cache/
+/test/Fixture/logs/
