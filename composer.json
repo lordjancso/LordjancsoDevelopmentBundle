@@ -18,19 +18,12 @@
         "fabpot/php-cs-fixer": "^1.11"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.7|^5.0"
+        "phpunit/phpunit": "^4.7|^5.0",
+        "symfony/phpunit-bridge": "^2.7|^3.0"
     },
     "autoload": {
         "psr-4": {
             "Lordjancso\\DevelopmentBundle\\": "src"
         }
-    },
-    "autoload-dev" : {
-        "psr-4" : {
-            "Lordjancso\\DevelopmentBundle\\": "test"
-        }
-    },
-    "archive": {
-        "exclude": ["/test"]
     }
 }

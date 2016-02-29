@@ -21,5 +21,7 @@ class CsFixerCommand extends Command
         $process->run(function ($type, $buffer) {
             echo $buffer;
         });
+
+        return $process->getOutput();
     }
 }
