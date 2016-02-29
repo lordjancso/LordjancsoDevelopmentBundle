@@ -1,0 +1,3 @@
+lordjancso_development_homepage:
+    path:     /
+    defaults: { _controller: LordjancsoDevelopmentBundle:Default:index }
