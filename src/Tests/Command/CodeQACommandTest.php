@@ -2,21 +2,21 @@
 
 namespace Lordjancso\DevelopmentBundle\Tests\Command;
 
-use Lordjancso\DevelopmentBundle\Command\CsFixerCommand;
+use Lordjancso\DevelopmentBundle\Command\CodeQACommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class CsFixerCommandTest extends \PHPUnit_Framework_TestCase
+class CodeQACommandTest extends \PHPUnit_Framework_TestCase
 {
     public function testExecute()
     {
         $application = new Application();
-        $application->add(new CsFixerCommand());
+        $application->add(new CodeQACommand());
 
-        $command = $application->find('lordjancso:cs-fixer');
+        $command = $application->find('lordjancso:code-qa');
         $commandTester = new CommandTester($command);
         $commandTester->execute(array('command' => $command->getName()));
 
-        $this->assertEquals('', $commandTester->getDisplay());
+        $this->assertContains('PHP CS FIXER', $commandTester->getDisplay());
     }
 }
