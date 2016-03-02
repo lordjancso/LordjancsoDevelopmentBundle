@@ -3,6 +3,7 @@
 namespace Lordjancso\DevelopmentBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -16,13 +17,19 @@ class CodeQACommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $phpCsFixer = $this->getApplication()->find('lordjancso:php-cs-fixer');
+        $phpCsFixerCommand = $this->getApplication()->find('lordjancso:php-cs-fixer');
+        $phpCsFixerArguments = array();
+        $phpCsFixerInput = new ArrayInput($phpCsFixerArguments);
+        $phpCsFixer = $phpCsFixerCommand->run($phpCsFixerInput, $output);
 
         if ($phpCsFixer !== 0) {
             return $phpCsFixer;
         }
 
-        $phpUnit = $this->getApplication()->find('lordjancso:php-unit');
+        $phpUnitCommand = $this->getApplication()->find('lordjancso:php-unit');
+        $phpUnitArguments = array();
+        $phpUnitInput = new ArrayInput($phpUnitArguments);
+        $phpUnit = $phpUnitCommand->run($phpUnitInput, $output);
 
         if ($phpUnit !== 0) {
             return $phpUnit;
