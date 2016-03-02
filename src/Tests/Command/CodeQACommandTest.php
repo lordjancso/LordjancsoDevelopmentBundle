@@ -17,6 +17,6 @@ class CodeQACommandTest extends \PHPUnit_Framework_TestCase
         $commandTester = new CommandTester($command);
         $commandTester->execute(array('command' => $command->getName()));
 
-        $this->assertContains('PHP CS FIXER', $commandTester->getDisplay());
+        $this->assertEquals(0, $commandTester->getStatusCode());
     }
 }
