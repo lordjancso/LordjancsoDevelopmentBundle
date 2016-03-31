@@ -8,16 +8,18 @@ class Hooks
 {
     public static function checkHooks(Event $event)
     {
+        $pwd = exec('pwd');
         $io = $event->getIO();
-        $gitHook = @file_get_contents(__DIR__.'/../../../.git/hooks/pre-commit');
+        $gitHook = @file_get_contents($pwd.'/.git/hooks/pre-commit');
         $docHook = @file_get_contents(__DIR__.'/../../../docs/hooks/pre-commit');
 
-        $result = true;
         if ($gitHook !== $docHook) {
-            $io->write('<error>You, motherfucker, please, set up your hooks!</error>');
-            $result = false;
+            $io->write('<error>Please set up your hooks!</error>');
+            $io->write('<error>rm -rf .git/hooks && ln -s vendor/lordjancso/development-bundle/docs/hooks .git/hooks</error>');
+
+            return false;
         }
 
-        return $result;
+        return true;
     }
 }
