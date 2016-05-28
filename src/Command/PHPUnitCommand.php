@@ -20,6 +20,7 @@ class PHPUnitCommand extends Command
         $output->writeln('PHP Unit');
 
         $command = new Process('php vendor/phpunit/phpunit/phpunit');
+        $command->setTimeout(null);
         $command->run(function ($type, $buffer) {
             echo $buffer;
         });
