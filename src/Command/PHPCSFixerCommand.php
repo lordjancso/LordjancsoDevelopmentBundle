@@ -19,7 +19,7 @@ class PHPCSFixerCommand extends Command
     {
         $output->writeln('PHP CS FIXER');
 
-        $command = new Process('php vendor/fabpot/php-cs-fixer/php-cs-fixer --dry-run --diff --verbose --config=sf23 --level=symfony fix ./');
+        $command = new Process('php vendor/fabpot/php-cs-fixer/php-cs-fixer --dry-run --diff --verbose --config=sf23 --level=symfony --fixers=long_array_syntax,ordered_use fix ./');
         $command->setTimeout(null);
         $command->run(function ($type, $buffer) {
             echo $buffer;
